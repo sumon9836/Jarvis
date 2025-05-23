@@ -4,16 +4,16 @@
     "description": "A simple WhatsApp Bot Based On WhiskeySockets/Baileys",
     "main": "index.js",
     "scripts": {
-        "postinstall": "node -e \"try { require('sharp') } catch (e) { process.exit(1); }\" || yarn add --ignore-engines sharp@0.33.5",
+        "postinstall": "node -e \"try { require('sharp') } catch (e) { process.exit(1); }\" || npm install sharp@0.32.6 --no-save",
         "start": "pm2 start . --attach --name Jarvis-md",
         "stop": "pm2 stop Jarvis-md"
     },
     "engines": {
-        "node": ">=18.0.0 <=22.x"
+        "node": "21.7.3"
     },
     "license": "MIT",
     "dependencies": {
-        "@whiskeysockets/baileys": "github:Loki-Xer/Baileys",
+        "@whiskeysockets/baileys": "^6.7.17",
         "async-lock": "^1.4.1",
         "browser-id3-writer": "^4.4.0",
         "cheerio": "^1.0.0",
@@ -27,9 +27,10 @@
         "node-webpmux": "^3.2.0",
         "pdfkit": "^0.15.0",
         "pm2": "^5.4.2",
+        "audio-decode": "^2.2.2",
+        "sharp": "0.32.6",
         "pg": "^8.7.3",
         "sequelize": "^6.21.4",
-        "sharp": "^0.33.5",
         "simple-git": "^3.20.0",
         "sqlite3": "^5.0.11"
     }
