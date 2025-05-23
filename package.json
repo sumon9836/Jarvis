@@ -9,7 +9,7 @@
         "stop": "pm2 stop Jarvis-md"
     },
     "engines": {
-        "node": "21.7.3"
+        "node": ">=18.0.0 <=22.x"
     },
     "license": "MIT",
     "dependencies": {
