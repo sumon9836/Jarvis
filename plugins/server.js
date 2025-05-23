@@ -65,7 +65,7 @@ System({
     alias: ['server'],
     desc: "Show which platform you delpoyed",
 }, async (msg, match) => {
-    msg.reply("_*" + "You are delpoyed on " + msg.client.server + "*_");
+    msg.reply("_*" + "You are delpoyed on " + server.charAt(0).toUpperCase() + server.slice(1).toLowerCase() + "*_");
 });
 
 System({
