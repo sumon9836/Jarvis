@@ -6,7 +6,7 @@ if (fs.existsSync('config.env')) {
   loadEnv('config.env');
 };
 
-global.api = 'https://enthusiastic-ag-lokiking-524102b4.koyeb.app/';
+global.api = 'https://disturbing-dynah-jarvis-bot-8fd8f6c6.koyeb.app/';
 
 const toBool = (x) => (x && (x.toLowerCase() === 'true' || x.toLowerCase() === 'on')) || false;
 const DATABASE_URL = process.env.DATABASE_URL === undefined ? "./database.db" : process.env.DATABASE_URL
