@@ -39,6 +39,8 @@ const {
     trim,
     elevenlabs,
     removeBg,
+    cropImage,
+    cropToCircle,
     createRoundSticker
 } = require("./client/"); 
 const stickerPackNameParts = config.STICKER_PACKNAME.split(";");
@@ -162,13 +164,31 @@ System({
 System({
     pattern: "circle",
     fromMe: isPrivate,
-    desc: "Changes photo to sticker",
+    desc: "Make circle photo or sticker",
     type: "converter",
 }, async (message) => {
    if (!(message.image || message.reply_message.sticker || message.reply_message.image)) return await message.reply("_*Reply to photo or sticker*_");
    if (message.reply_message.isAnimatedSticker) return await message.reply("_Reply to a non-animated sticker message_");
    let media = await message.downloadMediaMessage(message.image ? message : message.quoted ? message.reply_message : null);
+   if(message.image || message.reply_message.image) {
+       return await message.send(await cropToCircle(media), {}, 'image');
+   };
    await message.send(await createRoundSticker(media), { packname: stickerPackNameParts[0], author: stickerPackNameParts[1] }, "sticker");
+});
+
+System({
+    pattern: "crop",
+    fromMe: isPrivate,
+    desc: "crop image or sticker",
+    type: "converter",
+}, async (message) => {
+   if (!(message.image || message.reply_message.sticker || message.reply_message.image)) return await message.reply("_*Reply to photo or sticker*_");
+   if (message.reply_message.isAnimatedSticker) return await message.reply("_Reply to a non-animated sticker message_");
+   if(message.image || message.reply_message.image) {
+       let media = await message.downloadMediaMessage(message.image ? message : message.quoted ? message.reply_message : null);
+       return await message.send(await cropImage(media), {}, 'image');
+   };
+   await message.send(await cropImage(await webpToPng(await message.reply_message.downloadAndSave())), { packname: stickerPackNameParts[0], author: stickerPackNameParts[1] }, "sticker");
 });
 
 System({
