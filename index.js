@@ -2,7 +2,8 @@ global.server = require('./config').VPS ? "VPS" : process.env.PWD?.includes("use
 const http = require('http');
 const axios = require('axios');
 const PORT = process.env.PORT || 3000;
-const { config, Jarvis, removeFiles } = require("./lib");
+const { config, Jarvis } = require("./lib");
+const { removeFiles } = require("./plugins/client/");
 const url = server === "RENDER" ? process.env.RENDER_EXTERNAL_URL : server === "KOYEB" ? "https://" + KOYEB_PUBLIC_DOMAIN : false;
 
 process.env.NODE_OPTIONS = `--max-old-space-size=${Math.floor((require('os').totalmem() / (1024 * 1024)) * 0.6)}`;
@@ -13,7 +14,6 @@ http.createServer((req, res) => {
 }).listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
 
 Jarvis({ isStarted: true });
 
