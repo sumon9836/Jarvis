@@ -22,20 +22,20 @@ const {
     toAudio,
     toVideo,
     sendUrl,
-    getBuffer,
     webpToPng,
     webp2mp4,
     setData,
     getData,
-    IronMan,
     translate,
     makeUrl
 } = require("../lib/");
 const { 
     trim,
     getJson,
+    IronMan,
     postJson,
     removeBg,
+    getBuffer,
     cropImage,
     AddMp3Meta,
     elevenlabs,
