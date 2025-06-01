@@ -31,6 +31,7 @@ System({
     desc: 'mention',
     type: 'tool'
 }, async (message, match) => {
+	message.send(match);
    const { mention = { status: "false", message: "" } } = await getData(message.user.id);
    if (match === "get" && message.isOwner) return await message.send(mention.message || '_*Mention not set yet*_');
    if (match && message.isOwner) {
