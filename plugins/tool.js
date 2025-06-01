@@ -26,12 +26,11 @@ System({
 });
 
 System({
-    pattern: 'mention ?(.*)',
+    pattern: 'mention',
     fromMe: true,
     desc: 'mention',
     type: 'tool'
 }, async (message, match) => {
-	message.send(match);
    const { mention = { status: "false", message: "" } } = await getData(message.user.id);
    if (match === "get" && message.isOwner) return await message.send(mention.message || '_*Mention not set yet*_');
    if (match && message.isOwner) {
@@ -88,7 +87,7 @@ System({
 });
 
 System({
-    pattern: 'alive ?(.*)',
+    pattern: 'alive',
     fromMe: isPrivate,
     desc: 'Check if the bot is alive',
     type: 'tool'
@@ -118,7 +117,7 @@ System({
 });
 
 System({
-    pattern: 'delcmd ?(.*)',
+    pattern: 'delcmd',
     fromMe: true,
     desc: 'to delete audio/image/video cmd',
     type: 'tool'
@@ -137,7 +136,7 @@ System({
 });
 
 System({
-    pattern: 'listcmd ?(.*)',
+    pattern: 'listcmd',
     fromMe: true,
     desc: 'to list all commands',
     type: 'tool'
