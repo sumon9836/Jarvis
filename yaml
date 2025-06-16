@@ -3,8 +3,6 @@ services:
     name: jarvis
     repo: https://github.com/Loki-Xer/jarvis.git
     branch: main
-    env: docker
-    dockerfilePath: Dockerfile
     plan: free
     autoDeploy: true
     envVars:
